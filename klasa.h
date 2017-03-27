@@ -69,7 +69,8 @@ public:
 		std::cin >> x;
 		struct liczby *temp, *temp2;
 		temp = pierwszy;
-		while(temp->id!=x) temp = temp->next;
+		//while(temp->id!=x) temp = temp->next;
+		for (int i=0; i<x; i++) temp=temp->next;
 		if (!temp) return -1;
 		temp2=temp->next;
 		temp2->prev=temp->prev;
