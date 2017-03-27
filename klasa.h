@@ -23,7 +23,23 @@ public:
 		pierwszy->next=NULL;
 		pierwszy->prev=NULL;
 		ostatni=pierwszy;
+		ileLiczb++;
 	};
+	int dajLiczbe(void) 
+	{
+		int ajdi;
+		std::cout << "Podaj liczbe w kolejnosci do wypisania, \n";
+		std::cin >> ajdi;
+		struct liczby *temp1;
+		//struct liczby *temp2;
+		temp1 = pierwszy;
+		for(int i=ileLiczb; i>ajdi; i--)
+		{
+			temp1=temp1->next;
+		}
+		std::cout << temp1->a;
+		return temp1->a;
+	}
 	void przesunOd(int od)
 	{
 		struct liczby *aktualny;
@@ -36,7 +52,7 @@ public:
 		}
 		//delete aktualny;
 	}//przesunOd
-	void przedunDo(int upto)
+	void przesunDo(int upto)
 	{
 		struct liczby *aktualny;
 		aktualny=pierwszy;
@@ -54,11 +70,12 @@ public:
 		std::cin >> x;
 		struct liczby *temp;
 		temp = new (struct liczby);
-		temp->id=1;
+		temp->id=(ileLiczb+1);
 		temp->prev=NULL;
 		temp->next=pierwszy;
 		temp->a=x;
 		przesunOd(0);
+		ileLiczb++;
 		pierwszy->prev=temp;
 		pierwszy=temp;
 	}
@@ -76,6 +93,11 @@ public:
 		temp2->prev=temp->prev;
 		(temp->prev)->next=temp2;
 		delete temp;
+		ileLiczb--;
+	}
+	void PobieranieEElementuZlisty()
+	{
+		system("wget google.com");
 	}
 	void wypisz(void)
 	{
@@ -84,6 +106,7 @@ public:
 		while(aktualny) 
 		{
 			std::cout << "Id:\t" << aktualny->id << "\nLiczba:\t" << aktualny->a << "\n\n";
+			aktualny->ileOtwierany++;
 			aktualny=aktualny->next;
 		}
 	}
